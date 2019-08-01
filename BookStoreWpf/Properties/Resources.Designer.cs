@@ -59,5 +59,55 @@ namespace BookStoreWpf.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BookStoreWpf_Core {
+            get {
+                object obj = ResourceManager.GetObject("BookStoreWpf_Core", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] BookStoreWpf_DataAccess {
+            get {
+                object obj = ResourceManager.GetObject("BookStoreWpf_DataAccess", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MvvmCross {
+            get {
+                object obj = ResourceManager.GetObject("MvvmCross", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MvvmCross_Platforms_Wpf {
+            get {
+                object obj = ResourceManager.GetObject("MvvmCross_Platforms_Wpf", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] System_Console {
+            get {
+                object obj = ResourceManager.GetObject("System_Console", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

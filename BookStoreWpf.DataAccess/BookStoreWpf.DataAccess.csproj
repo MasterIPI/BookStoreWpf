@@ -8,4 +8,8 @@
     <Folder Include="Providers\" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(TargetPath) $(ProjectDir)..\BookStoreWpf\Resources\$(TargetFileName)" />
+  </Target>
+
 </Project>

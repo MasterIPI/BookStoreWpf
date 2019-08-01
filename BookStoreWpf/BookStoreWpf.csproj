@@ -37,15 +37,18 @@
   <ItemGroup>
     <Reference Include="MvvmCross, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.6.3.0\lib\net461\MvvmCross.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="MvvmCross.Platforms.Wpf, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmCross.Platforms.Wpf.6.3.0\lib\net461\MvvmCross.Platforms.Wpf.dll</HintPath>
+      <Private>False</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
       <Private>True</Private>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -117,7 +120,23 @@
     <ProjectReference Include="..\BookStoreWpf.Core\BookStoreWpf.Core.csproj">
       <Project>{6ca9d32c-54bc-4067-8bb5-d3c0ba671859}</Project>
       <Name>BookStoreWpf.Core</Name>
+      <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\System.Console.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MvvmCross.Platforms.Wpf.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MvvmCross.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BookStoreWpf.Core.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BookStoreWpf.DataAccess.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
