@@ -4,19 +4,19 @@ using System.Threading.Tasks;
 
 namespace BookStoreWpf.Core.ViewModels
 {
-  public class HomeViewModel : MvxViewModel
-  {
-    public string TestString { get; set; }
-
-    public HomeViewModel()
+    public class HomeViewModel : MvxViewModel
     {
-      IMvxAppStart start = Mvx.IoCProvider.Resolve<IMvxAppStart>();
-      TestString = (start as AppStart).AppState as string;
-    }
+        public string TestString { get; set; }
 
-    public override async Task Initialize()
-    {
-      await base.Initialize();
+        public HomeViewModel()
+        {
+            IMvxAppStart start = Mvx.IoCProvider.Resolve<IMvxAppStart>();
+            TestString = (start as AppStart).AppState as string;
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+        }
     }
-  }
 }

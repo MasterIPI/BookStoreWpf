@@ -6,6 +6,36 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreWpf", "BookStoreWpf\BookStoreWpf.csproj", "{2714A00E-4A5F-4A5D-A6BA-DD71A044A10F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreWpf.Core", "BookStoreWpf.Core\BookStoreWpf.Core.csproj", "{6CA9D32C-54BC-4067-8BB5-D3C0BA671859}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E} = {3D61C432-B109-4D09-9B2D-BADF379BD78E}
+		{79C702FC-B752-46D9-AA40-D97C83920BB5} = {79C702FC-B752-46D9-AA40-D97C83920BB5}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api", "BookStore.Api\BookStore.Api.csproj", "{D5A163F9-B285-44DC-A697-65696F25B51C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E} = {3D61C432-B109-4D09-9B2D-BADF379BD78E}
+		{D3D934AF-9222-4D80-A5F4-040351AD26F6} = {D3D934AF-9222-4D80-A5F4-040351AD26F6}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api.Entities", "BookStore.Api.Entities\BookStore.Api.Entities.csproj", "{F17308F0-BD30-41A9-A63E-51932553A34C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api.DataAccess", "BookStore.Api.DataAccess\BookStore.Api.DataAccess.csproj", "{79C702FC-B752-46D9-AA40-D97C83920BB5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F17308F0-BD30-41A9-A63E-51932553A34C} = {F17308F0-BD30-41A9-A63E-51932553A34C}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api.BusinessLogic", "BookStore.Api.BusinessLogic\BookStore.Api.BusinessLogic.csproj", "{D3D934AF-9222-4D80-A5F4-040351AD26F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E} = {3D61C432-B109-4D09-9B2D-BADF379BD78E}
+		{79C702FC-B752-46D9-AA40-D97C83920BB5} = {79C702FC-B752-46D9-AA40-D97C83920BB5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{3D61C432-B109-4D09-9B2D-BADF379BD78E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreWpf.DataAccess", "BookStoreWpf.DataAccess\BookStoreWpf.DataAccess.csproj", "{8B8778CA-F583-48E7-9587-ADAF5DD52515}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E} = {3D61C432-B109-4D09-9B2D-BADF379BD78E}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +51,30 @@ Global
 		{6CA9D32C-54BC-4067-8BB5-D3C0BA671859}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CA9D32C-54BC-4067-8BB5-D3C0BA671859}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CA9D32C-54BC-4067-8BB5-D3C0BA671859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A163F9-B285-44DC-A697-65696F25B51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A163F9-B285-44DC-A697-65696F25B51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A163F9-B285-44DC-A697-65696F25B51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A163F9-B285-44DC-A697-65696F25B51C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F17308F0-BD30-41A9-A63E-51932553A34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17308F0-BD30-41A9-A63E-51932553A34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17308F0-BD30-41A9-A63E-51932553A34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17308F0-BD30-41A9-A63E-51932553A34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79C702FC-B752-46D9-AA40-D97C83920BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79C702FC-B752-46D9-AA40-D97C83920BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79C702FC-B752-46D9-AA40-D97C83920BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79C702FC-B752-46D9-AA40-D97C83920BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D934AF-9222-4D80-A5F4-040351AD26F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D934AF-9222-4D80-A5F4-040351AD26F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D934AF-9222-4D80-A5F4-040351AD26F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D934AF-9222-4D80-A5F4-040351AD26F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D61C432-B109-4D09-9B2D-BADF379BD78E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8778CA-F583-48E7-9587-ADAF5DD52515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8778CA-F583-48E7-9587-ADAF5DD52515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8778CA-F583-48E7-9587-ADAF5DD52515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8778CA-F583-48E7-9587-ADAF5DD52515}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

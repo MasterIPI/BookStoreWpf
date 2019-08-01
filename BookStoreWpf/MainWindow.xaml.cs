@@ -2,14 +2,14 @@
 
 namespace BookStoreWpf
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : MvxWindow
-  {
-    public MainWindow()
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : MvxWindow
     {
-      InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
     }
-  }
 }
