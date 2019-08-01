@@ -2,7 +2,7 @@
 using MvvmCross.ViewModels;
 using System.Threading.Tasks;
 
-namespace TestAppWpf.Core.ViewModels
+namespace BookStoreWpf.Core.ViewModels
 {
   public class HomeViewModel : MvxViewModel
   {

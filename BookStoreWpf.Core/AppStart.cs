@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using TestAppWpf.Core.ViewModels;
+using BookStoreWpf.Core.ViewModels;
 using MvvmCross;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
-namespace TestAppWpf.Core
+namespace BookStoreWpf.Core
 {
     public class AppStart : IMvxAppStart
     {

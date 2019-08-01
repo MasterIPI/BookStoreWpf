@@ -3,7 +3,7 @@ using MvvmCross.Core;
 using MvvmCross.Platforms.Wpf.Core;
 using MvvmCross.ViewModels;
 
-namespace TestAppWpf
+namespace BookStoreWpf
 {
   public partial class App : MvvmCross.Platforms.Wpf.Views.MvxApplication
   {

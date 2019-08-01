@@ -1,7 +1,7 @@
 ﻿using System;
 using MvvmCross.ViewModels;
 
-namespace TestAppWpf.Core
+namespace BookStoreWpf.Core
 {
   public class App : MvxApplication
   {

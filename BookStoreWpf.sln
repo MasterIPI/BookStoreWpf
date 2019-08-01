@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAppWpf", "TestAppWpf\TestAppWpf.csproj", "{2714A00E-4A5F-4A5D-A6BA-DD71A044A10F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreWpf", "BookStoreWpf\BookStoreWpf.csproj", "{2714A00E-4A5F-4A5D-A6BA-DD71A044A10F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAppWpf.Core", "TestAppWpf.Core\TestAppWpf.Core.csproj", "{6CA9D32C-54BC-4067-8BB5-D3C0BA671859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreWpf.Core", "BookStoreWpf.Core\BookStoreWpf.Core.csproj", "{6CA9D32C-54BC-4067-8BB5-D3C0BA671859}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

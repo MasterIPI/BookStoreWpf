@@ -1,6 +1,6 @@
 ﻿using MvvmCross.Platforms.Wpf.Views;
 
-namespace TestAppWpf
+namespace BookStoreWpf
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2714A00E-4A5F-4A5D-A6BA-DD71A044A10F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TestAppWpf</RootNamespace>
-    <AssemblyName>TestAppWpf</AssemblyName>
+    <RootNamespace>BookStoreWpf</RootNamespace>
+    <AssemblyName>BookStoreWpf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -114,9 +114,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestAppWpf.Core\TestAppWpf.Core.csproj">
+    <ProjectReference Include="..\BookStoreWpf.Core\BookStoreWpf.Core.csproj">
       <Project>{6ca9d32c-54bc-4067-8bb5-d3c0ba671859}</Project>
-      <Name>TestAppWpf.Core</Name>
+      <Name>BookStoreWpf.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
