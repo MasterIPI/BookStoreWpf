@@ -16,16 +16,26 @@ namespace BookStore.Api.Entities
         public int QuantityAvailable { get; set; }
 
         public DateTime PublishDate { get; set; }
+
+        public float Rating { get; set; }
+
+        public int AgeRating { get; set; }
+
+        public int PageNumber { get; set; }
+
+        public CoverType CoverType { get; set; }
+
+        public bool HasDustJacket { get; set; }
     }
 
-    public class ProductAuthor
+    public class ProductAuthor : BaseEntity
     {
         public long ProductId { get; set; }
 
         public long AuthorId { get; set; }
     }
 
-    public class ProductPublisher
+    public class ProductPublisher : BaseEntity
     {
         public long ProductId { get; set; }
 

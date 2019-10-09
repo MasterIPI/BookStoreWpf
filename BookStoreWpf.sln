@@ -15,6 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api", "BookStore.
 	ProjectSection(ProjectDependencies) = postProject
 		{3D61C432-B109-4D09-9B2D-BADF379BD78E} = {3D61C432-B109-4D09-9B2D-BADF379BD78E}
 		{D3D934AF-9222-4D80-A5F4-040351AD26F6} = {D3D934AF-9222-4D80-A5F4-040351AD26F6}
+		{79C702FC-B752-46D9-AA40-D97C83920BB5} = {79C702FC-B752-46D9-AA40-D97C83920BB5}
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api.Entities", "BookStore.Api.Entities\BookStore.Api.Entities.csproj", "{F17308F0-BD30-41A9-A63E-51932553A34C}"
@@ -30,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Api.BusinessLogic
 		{79C702FC-B752-46D9-AA40-D97C83920BB5} = {79C702FC-B752-46D9-AA40-D97C83920BB5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{3D61C432-B109-4D09-9B2D-BADF379BD78E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Models", "BookStore.Models\BookStore.Models.csproj", "{3D61C432-B109-4D09-9B2D-BADF379BD78E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreWpf.DataAccess", "BookStoreWpf.DataAccess\BookStoreWpf.DataAccess.csproj", "{8B8778CA-F583-48E7-9587-ADAF5DD52515}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStoreWpf.DataAccess", "BookStoreWpf.DataAccess\BookStoreWpf.DataAccess.csproj", "{8B8778CA-F583-48E7-9587-ADAF5DD52515}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3D61C432-B109-4D09-9B2D-BADF379BD78E} = {3D61C432-B109-4D09-9B2D-BADF379BD78E}
 	EndProjectSection
