@@ -6,8 +6,11 @@
 
   <ItemGroup>
     <Folder Include="Mappers\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookStore.Api.SeparateRepositories\BookStore.Api.SeparateRepositories.csproj" />
   </ItemGroup>
 
 </Project>

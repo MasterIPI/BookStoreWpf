@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using BookStore.Api.Extensions;
+using BookStore.Api.DataAccess.Interfaces;
+using BookStore.Api.Entities;
 
 namespace BookStore.Api
 {
@@ -33,6 +36,8 @@ namespace BookStore.Api
             {
                 options.UseSqlServer(connectionString);
             }, ServiceLifetime.Transient);
+
+            services.RegisterClassesFromBaseInterfaceTransient<IBaseRepository<Product>>(typeof(IBaseRepository<Product>).Assembly);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
