@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookStore.Api.BusinessLogic\BookStore.Api.BusinessLogic.csproj" />
     <ProjectReference Include="..\BookStore.Api.DataAccess\BookStore.Api.DataAccess.csproj" />
   </ItemGroup>
 
