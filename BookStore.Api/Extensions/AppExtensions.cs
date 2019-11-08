@@ -33,9 +33,10 @@ namespace BookStore.Api.Extensions
             return webHost;
         }
 
-        public static void RegisterClassesFromBaseInterfaceTransient<TBaseInterface>(this IServiceCollection serviceCollection, Assembly baseInterfaceAssembly) where TBaseInterface : class
+        public static void RegisterClassesFromBaseInterfaceTransient<TBaseInterface>(this IServiceCollection serviceCollection) where TBaseInterface : class
         {
             Type baseInterfaceType = typeof(TBaseInterface);
+            Assembly baseInterfaceAssembly = baseInterfaceType.Assembly;
 
             if (!baseInterfaceType.IsInterface)
             {
@@ -47,81 +48,43 @@ namespace BookStore.Api.Extensions
                 throw new ArgumentException("Provided assembly is not matching assembly, containing TBaseInterface");
             }
 
-            if (((TypeInfo)baseInterfaceType).ImplementedInterfaces.Any(interfaceType => interfaceType.Assembly == baseInterfaceType.Assembly
-                                                                                         || interfaceType.Assembly == baseInterfaceAssembly))
-            {
-                throw new TypeLoadException("Only base interfaces are allowed.");
-            }
-
-            List<TypeInfo> interfaces = new List<TypeInfo>();
-            List<TypeInfo> implementations = new List<TypeInfo>();
-
-            List<TypeInfo> definedTypes = GetAllReferencedTypes(baseInterfaceType);
+            Dictionary<Type,TypeInfo> definedTypes = GetAllReferencedTypes(baseInterfaceType);
 
             if (definedTypes.Count == 0)
             {
                 return;
             }
 
-            for (int type = 0; type < definedTypes.Count; type++)
+            foreach(var group in definedTypes)
             {
-                TypeInfo currClass = definedTypes[type];
-                if (currClass.IsClass)
-                {
-                    implementations.Add(currClass);
-                    continue;
-                }
-
-                if (currClass.IsInterface)
-                {
-                    interfaces.Add(currClass);
-                }
+                serviceCollection.AddTransient(group.Key, group.Value);
             }
 
-            if (interfaces.Count != implementations.Count)
-            {
-                return;
-            }
-
-            for (int interfaceTypeIndex = 0; interfaceTypeIndex < interfaces.Count; interfaceTypeIndex++)
-            {
-                TypeInfo currInterface = interfaces.ElementAt(interfaceTypeIndex);
-                TypeInfo implementation = implementations.FirstOrDefault(type => type.ImplementedInterfaces.Any(inter => inter == currInterface));
-
-                if (!(implementation is null) && !(currInterface is null))
-                {
-                    serviceCollection.AddTransient(currInterface, implementation);
-                    implementations.Remove(implementation);
-                }
-            }
+            var tmpServices = serviceCollection.ToList();
         }
 
-        private static List<TypeInfo> GetAllReferencedTypes(Type typeToSearch)
+        private static Dictionary<Type, TypeInfo> GetAllReferencedTypes(Type interfaceToSearch)
         {
-            HashSet<TypeInfo> loadedTypes = new HashSet<TypeInfo>();
+            Func<Type, bool> intefaceClassSelector = (implementedInterface) =>
+            interfaceToSearch.IsAssignableFrom(implementedInterface)
+            || (
+                 implementedInterface.Name.Equals(interfaceToSearch.Name)
+                 && implementedInterface.Assembly.CodeBase.Equals(interfaceToSearch.Assembly.CodeBase)
+                 && implementedInterface.Assembly.Location.Equals(interfaceToSearch.Assembly.Location)
+                 && implementedInterface.Assembly.FullName.Equals(interfaceToSearch.Assembly.FullName)
+               );
 
-            foreach (TypeInfo type in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "*.dll", SearchOption.AllDirectories)
-                                                      .Select(name => Assembly.LoadFile(name))
-                                                      .SelectMany(assembly => assembly.DefinedTypes)
-                                                      .Where(type => type.IsPublic
-                                                                     && type.ImplementedInterfaces.Any(inter => (
-                                                                                                                  inter.Name.Equals(typeToSearch.Name)
-                                                                                                                  && (
-                                                                                                                      inter.Assembly.CodeBase.Equals(typeToSearch.Assembly.CodeBase)
-                                                                                                                      && inter.Assembly.Location.Equals(typeToSearch.Assembly.Location)
-                                                                                                                      && inter.Assembly.FullName.Equals(typeToSearch.Assembly.FullName)
-                                                                                                                      )
-                                                                                                                ) || typeToSearch.IsAssignableFrom(inter)
-                                                                                                      )
-                                                                     && ((!type.IsAbstract && type.IsClass) || (type.IsInterface && type.IsAbstract))
-                                                            )
-                                                      .ToList())
-            {
+            Dictionary<Type, TypeInfo> result = Directory.GetFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "*.dll", SearchOption.AllDirectories)
+                                                         .Select(name => Assembly.LoadFile(name))
+                                                         .SelectMany(assembly => assembly.DefinedTypes)
+                                                         .Where(type => type.IsPublic
+                                                                        && !type.IsAbstract
+                                                                        && type.IsClass
+                                                                        && type.ImplementedInterfaces.Any(intefaceClassSelector))
+                                                         .GroupBy(type => type.ImplementedInterfaces.First(inter => !((inter as TypeInfo).ImplementedInterfaces.FirstOrDefault(intefaceClassSelector) is null)))
+                                                         .ToDictionary(group => group.Key, group => group.FirstOrDefault());
 
-                loadedTypes.Add(type);
-            }
-
-            return loadedTypes.ToList();
+            return result;
         }
     }
 }
