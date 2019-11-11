@@ -35,7 +35,7 @@ namespace BookStore.Api.Extensions
 
         public static void RegisterClassesFromBaseInterfaceTransient<TBaseInterface>(this IServiceCollection serviceCollection) where TBaseInterface : class
         {
-            Type baseInterfaceType = typeof(TBaseInterface);
+            TypeInfo baseInterfaceType = typeof(TBaseInterface) as TypeInfo;
             Assembly baseInterfaceAssembly = baseInterfaceType.Assembly;
 
             if (!baseInterfaceType.IsInterface)
@@ -43,9 +43,15 @@ namespace BookStore.Api.Extensions
                 throw new TypeLoadException("Only interfaces (base) are allowed.");
             }
 
-            if (baseInterfaceAssembly != baseInterfaceType.Assembly)
+            if (baseInterfaceType.ImplementedInterfaces.Any(implementedInterface =>
+            implementedInterface.IsAssignableFrom(baseInterfaceType)
+            || (
+                 implementedInterface.Assembly.CodeBase.Equals(baseInterfaceType.Assembly.CodeBase)
+                 && implementedInterface.Assembly.Location.Equals(baseInterfaceType.Assembly.Location)
+                 && implementedInterface.Assembly.FullName.Equals(baseInterfaceType.Assembly.FullName)
+               )))
             {
-                throw new ArgumentException("Provided assembly is not matching assembly, containing TBaseInterface");
+                throw new TypeLoadException("Only base interfaces are allowed.");
             }
 
             Dictionary<Type,TypeInfo> definedTypes = GetAllReferencedTypes(baseInterfaceType);
@@ -59,11 +65,9 @@ namespace BookStore.Api.Extensions
             {
                 serviceCollection.AddTransient(group.Key, group.Value);
             }
-
-            var tmpServices = serviceCollection.ToList();
         }
 
-        private static Dictionary<Type, TypeInfo> GetAllReferencedTypes(Type interfaceToSearch)
+        private static Dictionary<Type, TypeInfo> GetAllReferencedTypes(TypeInfo interfaceToSearch)
         {
             Func<Type, bool> intefaceClassSelector = (implementedInterface) =>
             interfaceToSearch.IsAssignableFrom(implementedInterface)
