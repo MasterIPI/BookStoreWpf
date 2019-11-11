@@ -43,18 +43,18 @@ namespace BookStore.Api.Extensions
                 throw new TypeLoadException("Only interfaces (base) are allowed.");
             }
 
-            if (baseInterfaceType.ImplementedInterfaces.Any(implementedInterface =>
-            implementedInterface.IsAssignableFrom(baseInterfaceType)
-            || (
-                 implementedInterface.Assembly.CodeBase.Equals(baseInterfaceType.Assembly.CodeBase)
-                 && implementedInterface.Assembly.Location.Equals(baseInterfaceType.Assembly.Location)
-                 && implementedInterface.Assembly.FullName.Equals(baseInterfaceType.Assembly.FullName)
-               )))
+            if (baseInterfaceType.ImplementedInterfaces.Any(implementedInterface => implementedInterface.IsAssignableFrom(baseInterfaceType)
+                                                                                    || (
+                                                                                         implementedInterface.Assembly.CodeBase.Equals(baseInterfaceType.Assembly.CodeBase)
+                                                                                         && implementedInterface.Assembly.Location.Equals(baseInterfaceType.Assembly.Location)
+                                                                                         && implementedInterface.Assembly.FullName.Equals(baseInterfaceType.Assembly.FullName)
+                                                                                       )
+                                                           ))
             {
                 throw new TypeLoadException("Only base interfaces are allowed.");
             }
 
-            Dictionary<Type,TypeInfo> definedTypes = GetAllReferencedTypes(baseInterfaceType);
+            Dictionary<Type,TypeInfo> definedTypes = GetAllImplementedTypes(baseInterfaceType);
 
             if (definedTypes.Count == 0)
             {
@@ -67,7 +67,7 @@ namespace BookStore.Api.Extensions
             }
         }
 
-        private static Dictionary<Type, TypeInfo> GetAllReferencedTypes(TypeInfo interfaceToSearch)
+        private static Dictionary<Type, TypeInfo> GetAllImplementedTypes(TypeInfo interfaceToSearch)
         {
             Func<Type, bool> intefaceClassSelector = (implementedInterface) =>
             interfaceToSearch.IsAssignableFrom(implementedInterface)
